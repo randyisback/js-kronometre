@@ -11,7 +11,7 @@ Kronometreyi çalıştırmak için `index.html` dosyasını tarayıcınızda aç
 Projeyi kendi bilgisayarınıza klonlayın:
 
 ```bash
-git clone https://github.com/randyisback/glitch-timer.git
+git clone https://github.com/randyisback/js-kronometre.git
 ``` 
 
 ## Örnek Kod
