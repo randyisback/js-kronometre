@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:linear-gradient(165deg,#1353ac,#3c75c4 ,#62adeb,#59b4ff);
+  animation: arkaplan 2s infinite;
+  background-size: 140% 120%;
+  transition: all 0.1s ease;
+}
+
+@keyframes arkaplan {
+  0% {
+    background-position: 0%;
+  }
+
+  20% {
+    background-position: 25%;
+  }
+
+  50% {
+    background-position: 50%;
+  }
+
+  75% {
+    background-position: 75%;
+  }
+
+  100% {
+    background-position: 100%;
+  }
+}
+
+.wrapper {
+  user-select: none;
+}
+
+.wrapper .time {
+  height: 100px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.09);
+  padding: 0 10px;
+}
+
+.wrapper .time span {
+  width: 100px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 500;
+  color: #333;
+}
+
+.time span.colon {
+  width: 10px;
+}
+
+.time span.ms-colon,
+.time span.millisecond {
+  color: #59b4ff;
+}
+
+.wrapper .buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.buttons button {
+  padding: 6px 16px;
+  outline: none;
+  border: none;
+  margin: 0 5px;
+  color: #59b4ff;
+  background: #fff;
+  font-size: 19px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.09);
+}
+
+.buttons button.active,
+.buttons button.stopActive {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+
+
+
+.container {
+  color: var(--color);
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.right {
+  text-align: right;
+  width: 100%;
+}
+
+.stack {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.stack span {
+  font-weight: bold;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  font-size: 4rem;
+  --stack-height: calc(100% / var(--stacks) - 1px);
+  --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+  --clip-top: calc(var(--stack-height) * var(--index));
+  --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+  clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+  animation: stack 1.8s cubic-bezier(.46, .29, 0, 1.24) 1 backwards calc(var(--index) * 120ms), glitch 2s ease infinite 2s alternate-reverse;
+}
+
+.stack span:nth-child(odd) {
+  --glitch-translate: 8px;
+}
+
+.stack span:nth-child(even) {
+  --glitch-translate: -8px;
+}
+
+@keyframes stack {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+    text-shadow: -2px 3px 0 white, 2px -3px 0 red;
+  }
+
+  ;
+
+  60% {
+    opacity: 0.5;
+    transform: translateX(50%);
+  }
+
+  80% {
+    transform: none;
+    opacity: 1;
+    text-shadow: 2px -3px 0 red, -2px 3px 0 white;
+  }
+
+  100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: -2px 3px 0 white, 2px -3px 0 red;
+    transform: translate(var(--glitch-translate));
+  }
+
+  2% {
+    text-shadow: 2px -3px 0 red, -2px 3px 0 white;
+  }
+
+  4%, 100% {
+    text-shadow: none;
+    transform: none;
+  }
+}
